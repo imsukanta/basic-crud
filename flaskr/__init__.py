@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 from flask_migrate import Migrate
 from flask_restful import Api
-
+import os
 class Base(DeclarativeBase):
     pass
 db=SQLAlchemy(model_class=Base)
@@ -11,7 +11,7 @@ migrate=Migrate()
 def create_app():
     app=Flask(__name__,instance_relative_config=True)
     app.config.from_pyfile('config.py',silent=True)
-    app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:@localhost/flaskdb'
+    app.config['SQLALCHEMY_DATABASE_URI']=os.getenv("DATABASE_URL")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
     db.init_app(app)
     migrate.init_app(app,db)
