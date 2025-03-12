@@ -1,0 +1,29 @@
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+env/
+.venv/
+
+# Environment variables (security reasons)
+.env
+*.env
+
+# Flask database files (if using SQLite)
+*.sqlite3
+database.db
+
+# Flask migrations (optional, can be recreated)
+migrations/
+
+# OS-specific junk files
+.DS_Store
+Thumbs.db
+
+# Render deployment (KEEP THESE FILES)
+# runtime.txt  ❌ DO NOT IGNORE
+# start.sh     ❌ DO NOT IGNORE
