@@ -11,7 +11,9 @@ migrate=Migrate()
 def create_app():
     app=Flask(__name__,instance_relative_config=True)
     app.config.from_pyfile('config.py',silent=True)
-    app.config['SQLALCHEMY_DATABASE_URI']=os.getenv("DATABASE_URL")
+    app.config['SQLALCHEMY_DATABASE_URI']="postgresql://flask_cp7q_user:AckkG5e7ezIUxfrnH91wIWaxlnWKcqNf@dpg-cv8j7uqn91rc738jeoqg-a/flask_cp7q"
+    if not app.config['SQLALCHEMY_DATABASE_URI']:
+        raise ValueError("DATABASE_URL environment variable is not set!")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
     db.init_app(app)
     migrate.init_app(app,db)
